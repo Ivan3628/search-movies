@@ -10,7 +10,7 @@ const MovieInfo = ({ match }) => {
     //eslint-disable-next-line
   }, []);
 
-  const { poster_path, title, genres } = movieInfo;
+  const { poster_path, title, genres = [] } = movieInfo;
 
   const genresArr = [];
 
@@ -20,7 +20,7 @@ const MovieInfo = ({ match }) => {
     }
   });
 
-  const genre2 = genresArr.slice(0, 2);
+  let genre2 = genresArr.slice(0, 2);
 
   return (
     <div className="w-full bg-black">
@@ -34,7 +34,7 @@ const MovieInfo = ({ match }) => {
         </div>
         <div className="w-3/4 h-auto float-right overflow-hidden  p-2">
           <h3 className="text-2xl text-white font-mono mt-4 mb-3">{title}</h3>
-          <h3 className="text-2xl text-white font-mono ">{genre2}</h3>
+          <h3 className="text-2xl text-white font-mono ">Genres:{genre2}</h3>
         </div>
       </div>
     </div>
