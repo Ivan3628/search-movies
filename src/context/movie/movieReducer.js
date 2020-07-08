@@ -1,4 +1,4 @@
-import { SEARCH_MOVIES, GET_MOVIE_INFO } from "../types";
+import { SEARCH_MOVIES, GET_MOVIE_INFO, SET_LOADING } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,6 +12,7 @@ export default (state, action) => {
         ...state,
         movieInfo: action.payload,
       };
+
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import alternative from "./alternative.png";
+import alternative from "./images/no-poster-available.jpg";
 
 const AlternativeImage = () => {
   return (
@@ -7,7 +7,9 @@ const AlternativeImage = () => {
       <img
         src={alternative}
         alt="alternative image"
-        className="w-full block content-center p-4"
+        width="400"
+        height="600"
+        className="w-full block content-center p-4 alt-image content-image"
       />
     </Fragment>
   );

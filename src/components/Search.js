@@ -1,16 +1,22 @@
 import React, { useState, useContext } from "react";
 import MovieContext from "../context/movie/movieContext";
+import AlertContext from "../context/alert/alertContext";
 
 const Search = () => {
   const movieContext = useContext(MovieContext);
   const { searchMovies } = movieContext;
   const [text, setText] = useState("");
 
+  const alertContext = useContext(AlertContext);
+
   const onSubmit = (e) => {
     e.preventDefault();
-    searchMovies(text);
-    console.log("Hello");
-    setText("");
+    if (text === "") {
+      alertContext.setAlert("Please enter something", "red-800");
+    } else {
+      searchMovies(text);
+      setText("");
+    }
   };
 
   const onChange = (e) => setText(e.target.value);
@@ -21,6 +27,7 @@ const Search = () => {
         <h2 className="text-3xl text-center text-white font-mono mt-5">
           Search Movies
         </h2>
+
         <form onSubmit={onSubmit} className="mx-auto w-4/5 mb-4">
           <input
             type="text"

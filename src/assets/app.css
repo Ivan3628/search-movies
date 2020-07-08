@@ -1,0 +1,17 @@
+.alt-image {
+  height: 244.5px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-image {
+  height: 70%;
+}
+
+.border-black {
+  border-color: #000;
+}

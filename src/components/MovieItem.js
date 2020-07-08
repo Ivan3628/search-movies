@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import AlternativeImage from "./images/AlternativeImage";
+import AlternativeImage from "./AlternativeImage";
 
 const MovieItem = ({ movie: { id, title, poster_path } }) => {
   return (
@@ -10,7 +10,7 @@ const MovieItem = ({ movie: { id, title, poster_path } }) => {
         <img
           src={"https://image.tmdb.org/t/p/w400/" + poster_path}
           alt=""
-          className="w-full block content-center p-4"
+          className="w-full block content-center p-4 content-image"
         />
       ) : (
         <AlternativeImage></AlternativeImage>
@@ -18,7 +18,7 @@ const MovieItem = ({ movie: { id, title, poster_path } }) => {
       <h6 className="text-base text-center text-white my-3 font-mono">
         {title}
       </h6>
-      <div className="mx-auto">
+      <div className="button-container">
         <Link
           to={`/movie/${id}`}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "

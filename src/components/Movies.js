@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import MovieItem from "./MovieItem";
+
 import MovieContext from "../context/movie/movieContext";
 
 const Movies = () => {

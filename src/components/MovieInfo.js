@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import MovieContext from "../context/movie/movieContext";
-import AlternativeImage from "./images/AlternativeImage";
+import AlternativeImage from "./AlternativeImage";
+
+import { Link } from "react-router-dom";
 
 const MovieInfo = ({ match }) => {
   const movieContext = useContext(MovieContext);
@@ -8,7 +10,7 @@ const MovieInfo = ({ match }) => {
 
   useEffect(() => {
     getMovieInfo(match.params.id);
-    //eslint-disable-next-line
+    //eslint-disable-next-line,
   }, []);
 
   const {
@@ -19,9 +21,10 @@ const MovieInfo = ({ match }) => {
     revenue,
     budget,
     vote_average,
-    credits,
+    credits = { cast: [], crew: [] },
+    overview,
+    homepage,
   } = movieInfo;
-  debugger;
 
   //Get genres
   const genresArr = [];
@@ -34,21 +37,33 @@ const MovieInfo = ({ match }) => {
 
   const genre2 = genresArr.slice(0, 2);
   const genreStr = genre2.toString();
-  const firstTwoGenres = genreStr.split("");
+  const firstTwoGenres = genre2.join(", ");
 
   //Get director
 
   const directorArr = [];
-  /*
   credits.crew.forEach((entry) => {
     if (entry.job === "Director") {
       directorArr.push(entry.name);
     }
   });
 
-  const getDirector = directorArr.slice(0, 1);
+  const getDirector = directorArr.length ? directorArr.slice(0, 1) : "";
   const director = getDirector.toString();
-  */
+
+  //Get writer
+  const allWriters = credits.crew.filter(
+    (credit) => credit.department === "Writing"
+  );
+  const writer = allWriters.length ? allWriters[0].name : "";
+
+  //Get actors
+  const actors = credits.cast.length
+    ? credits.cast
+        .slice(0, Math.min(credits.cast.length, 3))
+        .map((c) => c.name)
+        .join(", ")
+    : "";
 
   return (
     <div className="w-full bg-black">
@@ -58,7 +73,7 @@ const MovieInfo = ({ match }) => {
             <img
               src={"https://image.tmdb.org/t/p/w400/" + poster_path}
               alt=""
-              className="w-full block content-center p-4"
+              className="w-full block content-center p-4 content-image"
             />
           ) : (
             <AlternativeImage></AlternativeImage>
@@ -66,12 +81,50 @@ const MovieInfo = ({ match }) => {
         </div>
         <div className="w-3/4 h-auto float-right overflow-hidden  p-2">
           <h3 className="text-2xl text-white font-mono mt-4 mb-3">{title}</h3>
-          <p className=" text-white font-mono ">Genre:{firstTwoGenres}</p>
-          <p className=" text-white font-mono ">Released:{release_date}</p>
-          <p className=" text-white font-mono ">Budget:${budget}</p>
-          <p className=" text-white font-mono ">Revenue:${revenue}</p>
-          <p className=" text-white font-mono ">Rating:{vote_average}</p>
-          <p className=" text-white font-mono ">Director:</p>
+          <div className="w-full bg-gray-800 overflow-hidden p-2">
+            <p className=" text-white font-mono leading-relaxed">
+              Genre:{firstTwoGenres}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Released:{release_date}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Budget:${budget}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Revenue:${revenue}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Rating:{vote_average}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Director: {director}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Writer: {writer}
+            </p>
+            <p className=" text-white font-mono leading-relaxed">
+              Actors: {actors}
+            </p>
+          </div>
+        </div>
+        <div className="container w-full h-600px  overflow-hidden bg-gray-900 mx-auto pt-0 px-2 pb-3">
+          <div className="w-full border-black overflow-hidden p-2">
+            <h4 className="text-2xl text-white font-mono mt-4 mb-1">Plot</h4>
+            <p className=" text-white font-mono mb-6">{overview}</p>
+            <a
+              href={homepage}
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+            >
+              Website
+            </a>
+            <Link
+              to={"/"}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+            >
+              Back To Search
+            </Link>
+          </div>
         </div>
       </div>
     </div>

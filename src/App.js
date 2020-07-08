@@ -3,20 +3,25 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import MovieInfo from "./components/MovieInfo";
+import Alert from "./components/Alert";
 import MovieState from "./context/movie/MovieState";
+import AlertState from "./context/alert/AlertState";
 
 function App() {
   return (
     <MovieState>
-      <Router>
-        <div className="App">
-          <Navbar></Navbar>
-          <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/movie/:id" component={MovieInfo}></Route>
-          </Switch>
-        </div>
-      </Router>
+      <AlertState>
+        <Router>
+          <div className="App">
+            <Navbar></Navbar>
+            <Alert></Alert>
+            <Switch>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/movie/:id" component={MovieInfo}></Route>
+            </Switch>
+          </div>
+        </Router>
+      </AlertState>
     </MovieState>
   );
 }
