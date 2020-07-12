@@ -8,7 +8,7 @@ const Alert = () => {
 
   return (
     alert !== null && (
-      <div className={`w-full bg-${alert.type} px-4 py-2 rounded`}>
+      <div className={`w-4/5 bg-${alert.type} mx-auto px-4 py-2 mb-4 rounded`}>
         <p className="text-white text-center font-mono">{alert.msg}</p>
       </div>
     )

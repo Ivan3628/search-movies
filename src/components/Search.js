@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Alert from "./Alert";
 import MovieContext from "../context/movie/movieContext";
 import AlertContext from "../context/alert/alertContext";
 
@@ -12,7 +13,7 @@ const Search = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (text === "") {
-      alertContext.setAlert("Please enter something", "red-800");
+      alertContext.setAlert("Please enter something", "red-700");
     } else {
       searchMovies(text);
       setText("");
@@ -27,7 +28,7 @@ const Search = () => {
         <h2 className="text-3xl text-center text-white font-mono mt-5">
           Search Movies
         </h2>
-
+        <Alert></Alert>
         <form onSubmit={onSubmit} className="mx-auto w-4/5 mb-4">
           <input
             type="text"

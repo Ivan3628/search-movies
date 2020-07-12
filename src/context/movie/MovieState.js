@@ -41,7 +41,6 @@ const MovieState = (props) => {
       value={{
         movies: state.movies,
         movieInfo: state.movieInfo,
-        loading: state.loading,
         searchMovies,
         getMovieInfo,
       }}
