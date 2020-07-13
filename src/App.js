@@ -13,7 +13,6 @@ function App() {
         <Router>
           <div className="App">
             <Navbar></Navbar>
-
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/movie/:id" component={MovieInfo}></Route>

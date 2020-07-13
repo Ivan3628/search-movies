@@ -68,7 +68,7 @@ const MovieInfo = ({ match }) => {
   return (
     <div className="w-full bg-black">
       <div className="container w-4/5 h-600px overflow-hidden bg-gray-900 mx-auto mt-4">
-        <div className="w-1/4 h-auto float-left overflow-hidden">
+        <div className="w-full lg:w-1/4 h-auto float-left  overflow-hidden">
           {poster_path ? (
             <img
               src={"https://image.tmdb.org/t/p/w400/" + poster_path}
@@ -79,7 +79,7 @@ const MovieInfo = ({ match }) => {
             <AlternativeImage></AlternativeImage>
           )}
         </div>
-        <div className="w-3/4 h-auto float-right overflow-hidden  p-2">
+        <div className="w-full lg:w-3/4 h-auto float-right  overflow-hidden p-2">
           <h3 className="text-2xl text-white font-mono mt-4 mb-3">{title}</h3>
           <div className="w-full bg-gray-800 overflow-hidden p-2">
             <p className=" text-white font-mono leading-relaxed">
@@ -114,13 +114,13 @@ const MovieInfo = ({ match }) => {
             <p className=" text-white font-mono mb-6">{overview}</p>
             <a
               href={homepage}
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+              class=" block md:inline lg:inline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 mb-3 md:mb-0 lg:mb-0 text-center sm:text-center rounded"
             >
               Website
             </a>
             <Link
               to={"/"}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+              className="block md:inline lg:inline  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 text-center sm:text-center rounded "
             >
               Back To Search
             </Link>

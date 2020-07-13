@@ -8,7 +8,7 @@ const Movies = () => {
   const { movies } = movieContext;
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
       {movies.map((movie) => (
         <MovieItem key={movie.id} movie={movie}></MovieItem>
       ))}
